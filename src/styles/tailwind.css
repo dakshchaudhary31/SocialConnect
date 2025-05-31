@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Primary Colors */
+  --color-primary: #3B82F6; /* Trust-building blue - blue-500 */
+  --color-primary-50: #EFF6FF; /* Light blue tint - blue-50 */
+  --color-primary-100: #DBEAFE; /* Lighter blue - blue-100 */
+  --color-primary-500: #3B82F6; /* Medium blue - blue-500 */
+  --color-primary-600: #2563EB; /* Darker blue - blue-600 */
+  --color-primary-700: #1D4ED8; /* Dark blue - blue-700 */
+
+  /* Secondary Colors */
+  --color-secondary: #8B5CF6; /* Creative purple - violet-500 */
+  --color-secondary-50: #F5F3FF; /* Light purple tint - violet-50 */
+  --color-secondary-100: #EDE9FE; /* Lighter purple - violet-100 */
+  --color-secondary-500: #8B5CF6; /* Medium purple - violet-500 */
+  --color-secondary-600: #7C3AED; /* Darker purple - violet-600 */
+
+  /* Accent Colors */
+  --color-accent: #F59E0B; /* Warm amber - amber-500 */
+  --color-accent-50: #FFFBEB; /* Light amber tint - amber-50 */
+  --color-accent-100: #FEF3C7; /* Lighter amber - amber-100 */
+  --color-accent-500: #F59E0B; /* Medium amber - amber-500 */
+  --color-accent-600: #D97706; /* Darker amber - amber-600 */
+
+  /* Background Colors */
+  --color-background: #FAFAFA; /* Soft off-white - gray-50 */
+  --color-surface: #FFFFFF; /* Pure white - white */
+
+  /* Text Colors */
+  --color-text-primary: #1F2937; /* Rich charcoal - gray-800 */
+  --color-text-secondary: #6B7280; /* Balanced gray - gray-500 */
+
+  /* Status Colors */
+  --color-success: #10B981; /* Natural green - emerald-500 */
+  --color-success-50: #ECFDF5; /* Light green tint - emerald-50 */
+  --color-success-100: #D1FAE5; /* Lighter green - emerald-100 */
+  --color-success-500: #10B981; /* Medium green - emerald-500 */
+
+  --color-warning: #F59E0B; /* Consistent amber - amber-500 */
+  --color-warning-50: #FFFBEB; /* Light amber tint - amber-50 */
+  --color-warning-100: #FEF3C7; /* Lighter amber - amber-100 */
+  --color-warning-500: #F59E0B; /* Medium amber - amber-500 */
+
+  --color-error: #EF4444; /* Clear red - red-500 */
+  --color-error-50: #FEF2F2; /* Light red tint - red-50 */
+  --color-error-100: #FEE2E2; /* Lighter red - red-100 */
+  --color-error-500: #EF4444; /* Medium red - red-500 */
+
+  /* Border Colors */
+  --color-border: rgba(0, 0, 0, 0.1); /* Minimal border - black with opacity */
+  --color-border-light: rgba(0, 0, 0, 0.05); /* Lighter border - black with opacity */
+
+  /* Shadow Colors */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.06);
+  --shadow-xl: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-text-primary font-body;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+@layer components {
+  .spring-animation {
+    transition: all 200ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .page-transition {
+    transition: all 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .hover-lift {
+    @apply spring-animation;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .skeleton-pulse {
+    animation: skeleton-pulse 1.5s ease-in-out infinite;
+  }
+
+  @keyframes skeleton-pulse {
+    0%, 100% {
+      opacity: 0.4;
+    }
+    50% {
+      opacity: 0.6;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spring-animation,
+  .page-transition,
+  .hover-lift,
+  .skeleton-pulse {
+    animation: none;
+    transition: none;
+  }
+}
